@@ -1,0 +1,21 @@
+﻿@model IEnumerable<TNLBook.Models.SACH>
+
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="owl-carousel vendor-carousel">
+                @foreach (var item in Model)
+                {
+                    <div class="vendor-item border p-4" style="height:300px;">
+                        <a href="@Url.Action("Detail", "Buy", new { id = item.Masach })">
+                            <img style="height: 190px;" src="~/img/@Html.DisplayFor(modelItem => item.Anhbia)" alt="" />
+                        </a>
+                        <p style="text-align:center; color:forestgreen;">
+                            @Html.DisplayFor(modelItem => item.Tensach)
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

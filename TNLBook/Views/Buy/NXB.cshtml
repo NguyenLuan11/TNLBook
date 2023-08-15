@@ -1,0 +1,17 @@
+﻿@model IEnumerable<TNLBook.Models.NHAXUATBAN>
+
+<nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
+    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+        <a href="@Url.Action("Index", "Buy")" class="nav-item nav-link">
+            Tất cả
+        </a>
+        @foreach (var item in Model)
+        {
+            <input type="checkbox" class="custom-control-input" checked id="nxb">
+            <a href="@Url.Action("SPTheoNXB", "Buy", new {id = item.MaNXB})" class="nav-item nav-link">
+                @item.TenNXB
+            </a>
+        }
+    </div>
+</nav>
+

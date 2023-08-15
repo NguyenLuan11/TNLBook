@@ -1,0 +1,73 @@
+﻿@model TNLBook.Models.SACH
+
+@{
+    ViewBag.Title = "Chi tiết Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">CHI TIẾT SẢN PHẨM</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="@Url.Action("Index", "Home")">Home</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Chi tiết</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<div style="display: flex;">
+    <div>
+        <dl class="dl-horizontal">
+            <dd>
+                <img style="width: 300px;height: 450px;" src="~/img/@Html.DisplayFor(model => model.Anhbia)" />
+            </dd>
+        </dl>
+    </div>
+    <div style="padding: 5%;">
+        <dl class="dl-horizontal">
+
+            <dd style="color: red; font-size:25px;">
+                @Html.DisplayFor(model => model.Tensach)
+            </dd>
+
+            <dt>
+                Nhà xuất bản
+            </dt>
+
+            <dd style="color: red;">
+                @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+            </dd>
+
+            <dt>
+                Giá bán
+            </dt>
+
+            <dd style="color: red;">
+                @String.Format("{0:0,0}", Model.Giaban) VNĐ
+            </dd>
+
+            <dt>
+                Mô tả
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mota)
+            </dd>
+
+        </dl>
+        <div class="card-footer d-flex justify-content-between bg-light border">
+            @if (Model.Soluongton > 0)
+            {
+                <a href="@Url.Action("ThemGiohang", "Cart", new { @iMasach = @Model.Masach, @strURL=Request.Url.ToString() })" class="btn btn-sm text-dark p-0">
+                    <i class="fas fa-shopping-cart text-danger mr-1"></i>Thêm giỏ hàng
+                </a>
+            }
+            else
+            {
+                <b style="color:red;">Hết hàng</b>
+            }
+        </div>
+    </div>
+</div>
